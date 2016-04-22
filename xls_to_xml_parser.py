@@ -12,7 +12,6 @@ import os
 import sys
 import codecs
 
-
 # Creation of subnodes in case a cell has multiple values separated by commas
 def create_nodes(container_node, node_list_name, tag_name, cell_value):
 	if not container_node.find(node_list_name):
@@ -22,17 +21,14 @@ def create_nodes(container_node, node_list_name, tag_name, cell_value):
 	for value in values:
 		etree.SubElement(node, "%s" % tag_name).text = value.strip()
 
-
 # Main program execution
 def main():
-
 	if (len(sys.argv)>1) and ('-h' in sys.argv or '--help' in sys.argv):
 		print "\nusage: python xls_to_xml_parser.py file.xls file.xml"
 		print "Options and arguments:" 
 		print "file.xls\t: input Excel file from where to read the data"
 		print "file.xml\t: output XML file\n"
 		exit()
-
 	elif (len(sys.argv) == 3):
 		xls_filename = sys.argv[1]
 		xlm_filename = sys.argv[2]
@@ -43,11 +39,9 @@ def main():
 			if not os.path.isfile(xls_filename):
 				print "\n Error: XLS file does not exist."
 				exit()
-
 	else:
 		print "\n Incorrect number of arguments. Type: xls_to_xml_parser.py -h"
 		exit()
-
 
 	# Prepare basic structure of the XML document
 	root = etree.Element("ingestion", name="%s" % 'XLS to XML parser', dateCreated=datetime.datetime.now().isoformat())
@@ -81,8 +75,7 @@ def main():
 	outputFile = open(xlm_filename, 'w')
 	outputFile.write(obj_xml)
 	outputFile.close()
-
-
+	
 
 # Call to main program when the user runs the script
 if __name__ == '__main__':
