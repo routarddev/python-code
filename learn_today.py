@@ -26,7 +26,7 @@ if language_code == "en" and country_code=="GB":
 elif language_code == "en" and country_code=="US":
 	web_domain="com"
 
-search_string = raw_input("What do you wanna know today? ")
+search_string = raw_input("What do you wanna learn today? ")
 
 words = search_string.split(' ')
 query = '+'.join(words)
